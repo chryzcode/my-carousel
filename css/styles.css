@@ -12,7 +12,6 @@
 }
 
 .carousel__track-container {
-  background-color: lightgreen;
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -55,7 +54,6 @@
 }
 
 .carousel__nav {
-  background-color: pink;
   display: flex;
   justify-content: center;
   padding: 10px 0;
