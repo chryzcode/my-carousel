@@ -2,15 +2,30 @@
 const track = document.querySelector(".carousel__track");
 // an array of all the slides
 const slides = Array.from(track.children);
-const nextButton = document.querySelector(".carouse__button--right");
-const prevButton = document.querySelector(".carouse__button--left");
-const dotsNav = document.querySelector(".carousel_nav");
+const nextButton = document.querySelector(".carousel__button--right");
+const prevButton = document.querySelector(".carousel__button--left");
+const dotsNav = document.querySelector(".carousel__nav");
 // an array of all the dots
 const dots = Array.from(dotsNav.children);
-//get the size of a slide
-const slideSize = slides[0].getBoundingClientRect().width;
+//get the width of the first slide
+const slideWidth = slides[0].getBoundingClientRect().width;
 
-//arrange the slids next to the other
-slides[0].style.left = 0;
+// a function that gets the width of a slide and multiplies it by the index of the slide to get the left position 
+const setSlidePosition = ((slide, index) => {
+    slide.style.left = slideWidth * index + "px";
+});
 
-console.log(slides);
+//apply the setSlidePosition for each of the slides
+slides.forEach(setSlidePosition);
+
+nextButton.addEventListener('click', e => {
+    //get current slide through the track
+    const currentSlide = track.querySelector(".current-slide");
+    //get the current slide
+    const nextSlide = currentSlide.nextElementSibling;
+    //get the space for moving tot the next slide
+    const amountToMove = nextSlide.style.left;
+
+    //move the next slide
+
+});
