@@ -27,6 +27,16 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
   targetSlide.classList.add("currentSlide");
 };
 
+prevButton.addEventListener("click", e => {
+  //get current slide through the track
+  const currentSlide = track.querySelector(".currentSlide");
+  //get the current slide
+  const prevSlide = currentSlide.previousElementSibling;
+  //get the space for moving tot the next slide
+
+  moveToSlide(track, currentSlide, prevSlide);
+});
+
 nextButton.addEventListener("click", e => {
   //get current slide through the track
   const currentSlide = track.querySelector(".currentSlide");
@@ -35,4 +45,16 @@ nextButton.addEventListener("click", e => {
   //get the space for moving tot the next slide
 
   moveToSlide(track, currentSlide, nextSlide);
+});
+
+dotsNav.addEventListener("click", e => {
+  //get the nav dot 
+  const targetDot = e.target.closest("button");
+  // if not the nav dot stop the function
+  if (!targetDot) return;
+
+  //get the current slide
+  const currentSlide = track.querySelector(".currentSlide");
+  //get the current dot
+  const currentDot = dotsNav.querySelector(".current-slide");
 });
