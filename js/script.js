@@ -41,7 +41,11 @@ prevButton.addEventListener("click", e => {
   const prevSlide = currentSlide.previousElementSibling;
   //get the space for moving tot the next slide
 
+  const currentDot = dotsNav.querySelector(".current-slide");
+  const prevDot = currentDot.previousElementSibling;
+
   moveToSlide(track, currentSlide, prevSlide);
+  updateDots(currentDot, prevDot);
 });
 
 nextButton.addEventListener("click", e => {
@@ -51,7 +55,11 @@ nextButton.addEventListener("click", e => {
   const nextSlide = currentSlide.nextElementSibling;
   //get the space for moving tot the next slide
 
+  const currentDot = dotsNav.querySelector(".current-slide");
+  const nextDot = currentDot.nextElementSibling;
+
   moveToSlide(track, currentSlide, nextSlide);
+  updateDots(currentDot, nextDot);
 });
 
 dotsNav.addEventListener("click", e => {
