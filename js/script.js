@@ -27,5 +27,6 @@ nextButton.addEventListener('click', e => {
     const amountToMove = nextSlide.style.left;
 
     //move the next slide
+    track.style.transform = "translateX(-" + amountToMove + ")";
 
 });
