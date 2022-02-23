@@ -27,6 +27,13 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
   targetSlide.classList.add("currentSlide");
 };
 
+const updateDots = (currentDot, targetDot) => {
+  //remove the current dot class property
+  currentDot.classList.remove("current-slide");
+  //add the current dot class property
+  targetDot.classList.add("current-slide");
+};
+
 prevButton.addEventListener("click", e => {
   //get current slide through the track
   const currentSlide = track.querySelector(".currentSlide");
@@ -48,7 +55,7 @@ nextButton.addEventListener("click", e => {
 });
 
 dotsNav.addEventListener("click", e => {
-  //get the nav dot 
+  //get the nav dot
   const targetDot = e.target.closest("button");
   // if not the nav dot stop the function
   if (!targetDot) return;
@@ -57,4 +64,11 @@ dotsNav.addEventListener("click", e => {
   const currentSlide = track.querySelector(".currentSlide");
   //get the current dot
   const currentDot = dotsNav.querySelector(".current-slide");
+  //get the index of the target dot
+  const targetIndex = dots.findIndex(dot => dot === targetDot);
+  //get the target slide
+  const targetSlide = slides[targetIndex];
+
+  moveToSlide(track, currentSlide, targetSlide);
+  updateDots(currentDot, targetDot);
 });
