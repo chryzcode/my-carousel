@@ -18,18 +18,21 @@ const setSlidePosition = (slide, index) => {
 //apply the setSlidePosition for each of the slides
 slides.forEach(setSlidePosition);
 
+const moveToSlide = (track, currentSlide, targetSlide) => {
+  //move the next slide
+  track.style.transform = "translateX(-" + targetSlide.style.left + ")";
+
+  //dynamically changing the current slide
+  currentSlide.classList.remove("currentSlide");
+  targetSlide.classList.add("currentSlide");
+};
+
 nextButton.addEventListener("click", e => {
   //get current slide through the track
   const currentSlide = track.querySelector(".currentSlide");
   //get the current slide
   const nextSlide = currentSlide.nextElementSibling;
   //get the space for moving tot the next slide
-  const amountToMove = nextSlide.style.left;
 
-  //move the next slide
-  track.style.transform = "translateX(-" + amountToMove + ")";
-
-  //dynamically changing the current slide
-  currentSlide.classList.remove("currentSlide");
-  nextSlide.classList.add("currentSlide");
+  moveToSlide(track, currentSlide, nextSlide);
 });
